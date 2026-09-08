@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โปรโมชั่น - Goods Japan (กูดส์ เจแปน)</title>
+    <meta name="description" content="ส่วนลดและข้อเสนอพิเศษจาก Goods Japan">
+    <meta property="og:title" content="โปรโมชั่น - Goods Japan">
+    <meta property="og:image" content="assets/images/poster.jpg">
+    <link rel="icon" href="assets/images/logo.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container container">
+                <div class="logo-container">
+                    <a href="index.html">
+                        <img src="assets/images/logo.png" alt="Goods Japan Logo" class="logo-img">
+                    </a>
+                </div>
+                <button class="hamburger" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">หน้าแรก</a></li>
+                    <li><a href="shop.html" class="nav-link">ร้านค้า</a></li>
+                    <li><a href="promotions.html" class="nav-link active">โปรโมชั่น</a></li>
+                    <li><a href="location.html" class="nav-link">ที่ตั้งร้าน</a></li>
+                    <li><a href="about.html" class="nav-link">เกี่ยวกับเรา</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section fade-in">
+            <div class="container">
+                <h1 class="section-title" style="text-align: center;">โปรโมชั่น 🎁</h1>
+                <p class="section-subtitle" style="text-align: center;">ส่วนลดและข้อเสนอพิเศษจาก Goods Japan</p>
+
+                <div class="promo-section" style="margin-bottom: 40px; text-align: center;">
+                    <h3>โปรโมชั่นจะหมดภายใน</h3>
+                    <div id="main-countdown" class="countdown" style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
+                        <div class="countdown-item">
+                            <span class="countdown-value">03</span>
+                            <span class="countdown-label">วัน</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-value">12</span>
+                            <span class="countdown-label">ชั่วโมง</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-value">45</span>
+                            <span class="countdown-label">นาที</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="discount-section" style="max-width: 500px; margin: 0 auto 60px auto;">
+                    <h3 style="text-align: center; margin-bottom: 15px;">กรอกโค้ดส่วนลด</h3>
+                    <div class="discount-input-group" style="display: flex; gap: 10px;">
+                        <input type="text" class="discount-input form-input" placeholder="กรอกโค้ดที่นี่..." style="margin-bottom: 0;">
+                        <button class="discount-btn btn btn-primary">ตรวจสอบ</button>
+                    </div>
+                    <div id="discount-result" class="discount-result" style="margin-top: 15px; text-align: center;"></div>
+                </div>
+
+                <h2 class="section-title">โปรโมชั่นที่กำลังเปิดใช้งาน</h2>
+                <div id="active-promos" class="promo-grid">
+                    <!-- Populated by js/promotions.js -->
+                </div>
+
+                <div class="torii-divider" style="margin: 60px 0;"></div>
+
+                <h2 class="section-title" style="color: #666;">โปรโมชั่นที่หมดอายุแล้ว</h2>
+                <div id="expired-promos" class="promo-grid" style="opacity: 0.6;">
+                    <!-- Populated by js/promotions.js -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container container">
+            <div class="footer-col">
+                <h3 class="footer-title">Goods Japan กูดส์ เจแปน</h3>
+                <p class="footer-text">ร้านขายของมือสองญี่ปุ่น สภาพดี มีเรื่องราว ส่งตรงจากญี่ปุ่นถึงมือคุณ</p>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-title">เมนู</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html" class="footer-link">หน้าแรก</a></li>
+                    <li><a href="shop.html" class="footer-link">ร้านค้า</a></li>
+                    <li><a href="promotions.html" class="footer-link">โปรโมชั่น</a></li>
+                    <li><a href="location.html" class="footer-link">ที่ตั้งร้าน</a></li>
+                    <li><a href="about.html" class="footer-link">เกี่ยวกับเรา</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-title">ติดต่อเรา</h3>
+                <p class="footer-text">คลองสี่ คลองหลวง ปทุมธานี</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">Facebook</a>
+                    <a href="#" class="social-link">Line</a>
+                    <a href="#" class="social-link">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Goods Japan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/sakura.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/promotions.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>
