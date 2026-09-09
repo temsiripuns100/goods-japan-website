@@ -1,0 +1,201 @@
+/* Japanese Aesthetic Animations and Effects */
+
+/* Sakura Fall Animation */
+@keyframes sakuraFall {
+  0% {
+    opacity: 0;
+    top: -10%;
+    transform: translateX(0) rotate(0deg);
+  }
+  10% {
+    opacity: 1;
+  }
+  20% {
+    transform: translateX(-15px) rotate(45deg);
+  }
+  40% {
+    transform: translateX(15px) rotate(90deg);
+  }
+  60% {
+    transform: translateX(-15px) rotate(135deg);
+  }
+  80% {
+    transform: translateX(15px) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    top: 110%;
+    transform: translateX(0) rotate(225deg);
+    opacity: 0;
+  }
+}
+
+.sakura-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.sakura-petal {
+  position: absolute;
+  background-color: var(--pink);
+  border-radius: 15px 0 15px 0;
+  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.5);
+  opacity: 0.8;
+  animation: sakuraFall linear infinite;
+}
+
+/* Base Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-20px); }
+  60% { transform: translateY(-10px); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+@keyframes lanternGlow {
+  0% { box-shadow: 0 0 5px rgba(248, 180, 200, 0.2); }
+  50% { box-shadow: 0 0 15px rgba(248, 180, 200, 0.6); }
+  100% { box-shadow: 0 0 5px rgba(248, 180, 200, 0.2); }
+}
+
+@keyframes countdownPulse {
+  0% { transform: scale(1); color: inherit; }
+  50% { transform: scale(1.1); color: var(--gold); }
+  100% { transform: scale(1); color: inherit; }
+}
+
+/* Animation Utility Classes */
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+}
+
+.fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.fade-in-left {
+  opacity: 0;
+  animation: fadeInLeft 0.8s ease forwards;
+}
+
+.fade-in-right {
+  opacity: 0;
+  animation: fadeInRight 0.8s ease forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-bounce {
+  animation: bounce 2s infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Specific Element Effects */
+.sparkle {
+  position: relative;
+}
+
+.sparkle::after {
+  content: '✨';
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  font-size: 12px;
+  animation: sparkle 1.5s infinite;
+}
+
+.nav-link:hover {
+  animation: lanternGlow 2s infinite;
+}
+
+.countdown-value {
+  animation: countdownPulse 1s infinite;
+}
+
+.promo-card {
+  background-image: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  background-size: 1000px 100%;
+  animation: shimmer 5s infinite linear;
+}

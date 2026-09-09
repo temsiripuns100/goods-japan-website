@@ -1,0 +1,69 @@
+{
+  "promotions": [
+    {
+      "id": "promo-001",
+      "title": "🌸 Grand Opening ลดทั้งร้าน!",
+      "description": "ฉลองเปิดร้านใหม่ที่ปทุมธานี ลดราคาสินค้าทุกชิ้น",
+      "code": "SAKURA10",
+      "discountPercent": 10,
+      "minPurchase": 500,
+      "maxDiscount": 200,
+      "startDate": "2026-09-01",
+      "endDate": "2026-10-31",
+      "isActive": true,
+      "isFeatured": true
+    },
+    {
+      "id": "promo-002",
+      "title": "📷 คนรักกล้องฟิล์ม",
+      "description": "ส่วนลดพิเศษสำหรับกล้องฟิล์มและอุปกรณ์",
+      "code": "FILMLOVER",
+      "discountPercent": 15,
+      "minPurchase": 2000,
+      "maxDiscount": 500,
+      "startDate": "2026-09-05",
+      "endDate": "2026-11-15",
+      "isActive": true,
+      "isFeatured": false
+    },
+    {
+      "id": "promo-003",
+      "title": "🍵 เซตน้ำชาลดแรง",
+      "description": "ซื้อชุดกาน้ำชาพร้อมถ้วยชา รับส่วนลดทันที",
+      "code": "TEASET20",
+      "discountPercent": 20,
+      "minPurchase": 1000,
+      "maxDiscount": 300,
+      "startDate": "2026-08-01",
+      "endDate": "2026-09-30",
+      "isActive": true,
+      "isFeatured": true
+    },
+    {
+      "id": "promo-004",
+      "title": "🎉 Welcome Member",
+      "description": "ส่วนลดสำหรับลูกค้าใหม่ที่สมัครสมาชิก",
+      "code": "NEWFRIEND",
+      "discountPercent": 5,
+      "minPurchase": 0,
+      "maxDiscount": 100,
+      "startDate": "2026-01-01",
+      "endDate": "2026-12-31",
+      "isActive": true,
+      "isFeatured": false
+    },
+    {
+      "id": "promo-005",
+      "title": "🎌 เทศกาลทานาบาตะ",
+      "description": "ลดพิเศษในช่วงเทศกาล (หมดอายุแล้ว)",
+      "code": "TANABATA",
+      "discountPercent": 15,
+      "minPurchase": 300,
+      "maxDiscount": 150,
+      "startDate": "2026-07-01",
+      "endDate": "2026-07-15",
+      "isActive": true,
+      "isFeatured": false
+    }
+  ]
+}
