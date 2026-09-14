@@ -2,7 +2,7 @@
 
 let allProducts = [];
 let currentCategory = 'all';
-let currentSort = 'newest';
+let currentSort = 'latest';
 let currentSearch = '';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -102,11 +102,16 @@ function renderProductCard(product) {
 }
 
 function renderProductsList(container, products) {
+    const noResultsDiv = document.getElementById('no-results');
+    
     if (products.length === 0) {
-        container.innerHTML = '<div class="no-products">ไม่พบสินค้าที่ตรงกับเงื่อนไข</div>';
+        container.innerHTML = '';
+        if (noResultsDiv) noResultsDiv.style.display = 'block';
+        else container.innerHTML = '<div class="no-products" style="text-align: center; padding: 40px; grid-column: 1 / -1;"><h3>ไม่พบสินค้าที่ตรงกับเงื่อนไข 😿</h3></div>';
         return;
     }
     
+    if (noResultsDiv) noResultsDiv.style.display = 'none';
     const html = products.map(p => renderProductCard(p)).join('');
     container.innerHTML = html;
 }
