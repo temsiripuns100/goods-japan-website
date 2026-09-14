@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goods Japan - Admin Dashboard</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js for graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Kanit', sans-serif; background-color: #f3f4f6; }
+        .card { background: white; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 1.5rem; }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <nav class="bg-gray-900 text-white p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold tracking-wider">⛩️ GOODS JAPAN <span class="text-sm font-normal text-gray-400">| ระบบจัดการหลังร้าน</span></h1>
+            <a href="index.html" class="text-sm text-gray-300 hover:text-white transition">กลับหน้าแรก</a>
+        </div>
+    </nav>
+
+    <div class="container mx-auto p-4 mt-6">
+        
+        <!-- API URL Config -->
+        <div class="mb-6 card bg-blue-50 border border-blue-100">
+            <label class="block text-sm font-medium text-blue-800 mb-2">เชื่อมต่อ Google Sheets (Web App URL)</label>
+            <div class="flex gap-2">
+                <input type="text" id="apiUrl" value="https://script.google.com/macros/s/AKfycbx2Sv9fLFI2vBFlP2FBkIJNakQQcDKcw7ByUJjwzmic5lyXF1bC3i1xlKSVy2aA46em/exec" placeholder="วาง URL ของ Google Apps Script ที่นี่..." class="flex-1 p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm">
+                <button onclick="fetchDashboardData()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm font-medium transition">โหลดข้อมูล</button>
+            </div>
+            <p class="text-xs text-gray-500 mt-2">* หมายเหตุ: หากยังไม่มี URL ระบบจะแสดงข้อมูลจำลอง (Mock Data) ให้ดูก่อน</p>
+        </div>
+
+        <!-- KPI Summary Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            <div class="card border-l-4 border-blue-500">
+                <p class="text-gray-500 text-sm">เป้าหมายยอดขาย (เดือนนี้)</p>
+                <h2 id="kpi-target" class="text-2xl font-bold text-gray-800">฿0</h2>
+            </div>
+            <div class="card border-l-4 border-green-500">
+                <p class="text-gray-500 text-sm">ยอดขายที่ทำได้แล้ว</p>
+                <h2 id="kpi-current" class="text-2xl font-bold text-green-600">฿0</h2>
+            </div>
+            <div class="card border-l-4 border-red-500">
+                <p class="text-gray-500 text-sm">ยอดที่ต้องทำเพิ่มเพื่อให้ถึงเป้า</p>
+                <h2 id="kpi-remaining" class="text-2xl font-bold text-red-500">฿0</h2>
+            </div>
+            <div class="card border-l-4 border-orange-400">
+                <p class="text-gray-500 text-sm">เฉลี่ยต้องขายต่อวัน (วันที่เหลือ)</p>
+                <h2 id="kpi-daily-need" class="text-2xl font-bold text-orange-500">฿0</h2>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+            <!-- Daily Sales Chart -->
+            <div class="card lg:col-span-2">
+                <h3 class="text-lg font-semibold mb-4">📈 ยอดขายรายวัน (Daily Sales)</h3>
+                <div class="relative h-72">
+                    <canvas id="dailySalesChart"></canvas>
+                </div>
+            </div>
+            
+            <!-- Target Progress Chart -->
+            <div class="card">
+                <h3 class="text-lg font-semibold mb-4">🎯 สัดส่วนความสำเร็จ</h3>
+                <div class="relative h-64 flex justify-center items-center">
+                    <canvas id="targetChart"></canvas>
+                </div>
+                <p id="progress-text" class="text-center mt-4 text-xl font-bold text-gray-700">0%</p>
+            </div>
+        </div>
+
+        <!-- Inventory Alert Section -->
+        <div class="card">
+            <h3 class="text-lg font-semibold mb-4 text-red-600">⚠️ แจ้งเตือนสต๊อกใกล้หมด (Low Stock Alert)</h3>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white">
+                    <thead class="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
+                        <tr>
+                            <th class="py-3 px-6 text-left">รหัสสินค้า</th>
+                            <th class="py-3 px-6 text-left">ชื่อสินค้า</th>
+                            <th class="py-3 px-6 text-center">คงเหลือ (ชิ้น)</th>
+                            <th class="py-3 px-6 text-center">สถานะ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inventory-table" class="text-gray-600 text-sm font-light">
+                        <!-- Rows will be injected by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script for Logic -->
+    <script src="js/admin.js"></script>
+</body>
+</html>
